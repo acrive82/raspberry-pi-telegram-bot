@@ -25,8 +25,8 @@ __version__ = "1.0.0"
 __license__ = "MIT"
 
 parser = argparse.ArgumentParser(description='Raspberry Pi Telegram Bot.')
-parser.add_argument("--token", help='Telegram Bot API Token', required=True)
-parser.add_argument("--debug", help='Enable debug log in console', required=False)
+parser.add_argument("-d", "--debug", help='Enable debug log in console', action="store_true")
+parser.add_argument("-t", "--token", help='Telegram Bot API Token', required=True)
 args = parser.parse_args()
 
 # Get the Telegram Bot API Token from program arguments
@@ -57,7 +57,7 @@ except:
 # Create LCD, passing in MCP GPIO adapter.
 lcd = Adafruit_CharLCD(pin_rs=0, pin_e=2, pins_db=[4, 5, 6, 7], GPIO=mcp)
 
-# Dictionary of relationship between relay identification and BMC pin
+# Dictionary of relationship between relay identification and BCM pin
 dict_relay_bcm = {
     1: 23,
     2: 24,
